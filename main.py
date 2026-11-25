@@ -25,6 +25,11 @@ def main():
         ],
     )
 
+    if not response.usage:
+        raise RuntimeError("failed to get usage from api response")
+    
+    print(f"Prompt tokens: {response.usage.prompt_tokens}\nResponse tokens: {response.usage.completion_tokens}")
+        
     print(response.choices[0].message.content)
 
 
